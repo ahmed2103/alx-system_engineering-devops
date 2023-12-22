@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
+# displays a list of currently running processes with their hierarchy
 
-#  all processes  PS 
-ps axfo user,pid,pcpu,pmem,vsz,rss,tty,stat,start,time,comm | while read -r user pid cpu mem vsz rss tty stat start time cmd
-do
-  # Print info
-  echo "$user $pid $cpu $mem $vsz $rss $tty $stat $start $time $cmd" 
-  
-  # Indent child processes
-  while read -r user pid cpu mem vsz rss tty stat start time cmd
-  do
-    echo "  $_ $cpu $mem $vsz $rss $tty $stat $start $time $cmd"
-  done < <(ps axfo user,pid,pcpu,pmem,vsz,rss,tty,stat,start,time,comm --ppid $pid)
-
-done
+ps -eo user,pid,%cpu,%mem,vsz,rss,tname,stat,start_time,bsdtime,args --forest
