@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
-
-# infinite_loop.sh
-
-# Loop indefinitely printing a message with a delay
+# Displays "To infinity and beyond" indefinitely with
+# a sleep 2 in between each iteration.
 
 while true
+
 do
-
-  # Print message
-  echo "To infinity and beyond"  
-
-  # Sleep for 2 seconds
+  echo "To infinity and beyond"
   sleep 2
 
 done
