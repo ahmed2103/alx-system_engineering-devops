@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+
+# Loop indefinitely printing messages with a 2 Sec delay
+
+while true
+do
+
+  echo "To infinity and beyond"  
+
+  # Sleep for 2 seconds
+  sleep 2
+
+  trap 'echo "I am invincible!!!"' SIGTERM
+
+done
