@@ -2,6 +2,7 @@
 
 # Displays "Best School" 10 times using a while loop.
 count=10
-while (( count-- > 0 )); do
+while (( count-- > 0 ))
+do
   echo "Best School"
 done
