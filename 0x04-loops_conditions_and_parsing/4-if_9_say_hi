@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Loop 10 times, displaying "Best School" 9 times. On the 9th &
 # iteration display "Hi", instead.
 
