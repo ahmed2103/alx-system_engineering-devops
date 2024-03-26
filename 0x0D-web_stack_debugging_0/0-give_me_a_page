@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # bash script that runs 'apache on docker
+
 service apache2 start
