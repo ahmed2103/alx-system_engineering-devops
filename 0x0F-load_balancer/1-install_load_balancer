@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#Script to configure haproxy
+
+apt-get -y update
+sudo apt-get -y install haproxy
+
+echo "ENABLED=1" > /etc/default/haproxy
+
+#configuring the haproxy server 
+
+echo "
+defaults
+	mode http
+	timeout client 10s
+	timeout connect 5s
+	timeout server 10s
+	timeout http-request 10s
+
+frontend alx-frontend
+	bind *:80
+	default_backend alx-backend
+
+backend alx-backend
+	balance roundrobin
+	server 494976-web-01 54.227.197.97:80 check
+	server 494976-web-02 54.237.28.128:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+service haproxy start
