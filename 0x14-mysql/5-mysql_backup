@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-# Script to backup all datatabases and compress it.
+# Script to backup all databases and compress them.
 
+# Get the current date components
 d=$(date +"%d")
 m=$(date +"%m")
 y=$(date +"%Y")
+
 file_name="$d-$m-$y.tar.gz"
-mysqldump --all-databases -u root -p="$1" >backub.sql
+
+mysqldump --all-databases -u root -p="$1" > backup.sql
+
 tar -czvf "$file_name" backup.sql
+
+
