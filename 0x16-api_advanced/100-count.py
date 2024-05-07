@@ -11,7 +11,7 @@ def count_words(subreddit, word_list, after=None, word_count={}):
     count of given keywords"""
     response = get('https://www.reddit.com/r/{}/hot.json?after={}'
                    .format(subreddit, after),
-                   headers={'User-Agent': 'Mozilla/5.0'})
+                   headers={'User-Agent': 'hasona'})
     if response.status_code == 200:
         for post in response.json().get('data').get('children'):
             title = post.get('data').get('title').lower().split()
