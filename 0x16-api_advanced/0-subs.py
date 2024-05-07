@@ -5,9 +5,10 @@ from requests import get
 
 def number_of_subscribers(subreddit):
     """Returns the number of subscribers for subreddit"""
-    response = get('https://www.reddit.com/r/{}/about.json'.format(subreddit),
-                   headers={'User-Agent': 'hasona'},
-                   allow_redirects=False)
-    if response.status_code == 200:
-        return response.json().get('data').get('subscribers')
-    return 0
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    headers = {'User-Agent': 'Hasona'}
+    response = get(url, headers=headers)
+    if response.status_code == 404:
+        return 0
+    result = response.json().get('data')
+    return result.get('subscribers')
