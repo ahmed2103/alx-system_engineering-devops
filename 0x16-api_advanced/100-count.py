@@ -7,8 +7,10 @@ from requests import get
 
 
 def count_words(subreddit, word_list, after=None, word_count={}):
-    """parses the title of all hot articles, and prints a sorted count of given keywords"""
-    response = get('https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit, after),
+    """parses the title of all hot articles, and prints a sorted
+    count of given keywords"""
+    response = get('https://www.reddit.com/r/{}/hot.json?after={}'
+                   .format(subreddit, after),
                    headers={'User-Agent': 'Mozilla/5.0'})
     if response.status_code == 200:
         for post in response.json().get('data').get('children'):
@@ -23,7 +25,8 @@ def count_words(subreddit, word_list, after=None, word_count={}):
         if after is not None:
             return count_words(subreddit, word_list, after, word_count)
         if word_count:
-            for key, value in sorted(word_count.items(), key=lambda x: x[1], reverse=True):
+            for key, value in sorted(word_count.items(),
+                                     key=lambda x: x[1], reverse=True):
                 print('{}: {}'.format(key, value))
         return
     print(None)

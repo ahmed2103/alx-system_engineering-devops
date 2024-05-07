@@ -8,7 +8,8 @@ from requests import get
 
 def recurse(subreddit, hot_list=[], after=None):
     """Returns a list of all hot articles for a given subreddit"""
-    response = get('https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit, after),
+    response = get('https://www.reddit.com/r/{}/hot.json?after={}'
+                   .format(subreddit, after),
                    headers={'User-Agent': 'Mozilla/5.0'})
     if response.status_code == 200:
         for post in response.json().get('data').get('children'):
