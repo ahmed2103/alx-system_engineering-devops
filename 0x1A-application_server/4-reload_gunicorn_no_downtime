@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# reloads configuration without timedown
+# Reloads gunicorn configuration
 
 ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
